@@ -10,12 +10,11 @@ public class LoanApplicationService {
     private LoanApplicationRepository repository;
 
     public LoanApplicationModel submitApplication(String applicantName, double loanAmount) {
-		System.out.println("Submit Application is started");
         LoanApplicationModel application = new LoanApplicationModel();
         application.setApplicationId(UUID.randomUUID().toString());
         application.setApplicantName(applicantName);
         application.setLoanAmount(loanAmount);
-        application.setApplicationStatus(loanAmount > 50000 ? ApplicationStatus.REJECTED : ApplicationStatus.SUBMITTED);
+        application.setApplicationStatus(loanAmount > 100000 ? ApplicationStatus.REJECTED : ApplicationStatus.SUBMITTED);
         return repository.save(application);
     }
 
